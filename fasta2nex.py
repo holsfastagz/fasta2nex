@@ -151,15 +151,16 @@ nexus_bottom_name = f"{gene_name}_bottom.nex"
 with open(nexus_bottom_name, "w") as file:
 	file.write(bottom_nexus_file)
 
-subp.run(f"seqret -sequence {aln} -outseq {aln}.nex -osformat nexus",
+subp.run(f"seqret -sequence {args.aln} -outseq {args.aln}.nex -osformat nexus",
     shell = True)
 
-subp.run(f"cat {nexus_bottom_name} ${aln}.nex > {gene_name}.nex")
+subp.run(f"cat {args.aln}.nex {nexus_bottom_name} > {gene_name}.nex",
+    shell = True)
 
 print(f"Output written to {gene_name}.nex")
 
 current_time = datetime.now()
 print("Ended at", current_time)
 
-subp.run(f"rm .*fasta .*outfmt6 {aln}.nex {nexus_bottom_name}",
+subp.run(f"rm .*fasta .*outfmt6 {args.aln}.nex {nexus_bottom_name}",
     shell=True)
