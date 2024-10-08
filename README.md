@@ -18,7 +18,7 @@ fasta2nex also requires the following Python packages:
 * argparse
 * datetime
 
-### Usage
+## Usage
 
 fasta2nex takes the following as input:
 
